@@ -1,7 +1,7 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
 import Category from '../Category/Category';
-import Category from '../PopularMenu/PopularMenu';
+import PopularMenu from '../../PopularMenu/PopularMenu';
 
 const Home = () => {
   return (

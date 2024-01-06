@@ -4,9 +4,9 @@ import featuredImg from '../../../assets/home/featured.jpg'
 import './featured.css'
 const Featured = () => {
   return (
-    <div className='featured-item my-10 py-10'>
+    <div className='featured-item bg-fixed  bg-blur my-10 py-10'>
       <SectionTitle heading={'Featured Item'} subHeading={'check it out'}></SectionTitle>
-      <div className="md:flex justify-center items-center py-8 px-16 space-x-6">
+      <div className="md:flex justify-center items-center text-black text-lg py-8 px-16 space-x-6">
         <div className="">
           <img src={featuredImg} alt="" />
         </div>

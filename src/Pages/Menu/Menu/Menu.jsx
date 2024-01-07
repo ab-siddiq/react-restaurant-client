@@ -6,23 +6,17 @@ import dessertBG from "../../../assets/menu/dessert-bg.jpg";
 import pizzaBG from "../../../assets/menu/pizza-bg.jpg";
 import saladBG from "../../../assets/menu/salad-bg.jpg";
 import soupBG from "../../../assets/menu/soup-bg.jpg";
-import useMenu from "../../../hooks/useMenu";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuCategory from "../MenuCategory/MenuCategory";
+import useCategory from "../../../hooks/useCategory";
 const Menu = () => {
-  const [menu] = useMenu();
-
-  const offer = menu.filter((item) => item.category === "popular");
-  const salad = menu.filter((item) => item.category === "salad");
-  const dessert = menu.filter((item) => item.category === "dessert");
-  const pizza = menu.filter((item) => item.category === "pizza");
-  const soup = menu.filter((item) => item.category === "soup");
+  const [offer, salad, dessert, pizza, soup] = useCategory();
   return (
     <div>
       <Helmet>
         <title>Restuarent | Menu</title>
       </Helmet>
-      <Cover menuImage={menuBG} title="Our menu"></Cover>
+      <Cover coverImage={menuBG} title="Our menu"></Cover>
       <SectionTitle
         heading={"todays offer"}
         subHeading={"Don't miss"}

@@ -7,8 +7,21 @@ const useCategory = () => {
   const dessert = menu.filter((item) => item.category === "dessert");
   const pizza = menu.filter((item) => item.category === "pizza");
   const soup = menu.filter((item) => item.category === "soup");
-
-  return [offer,salad,dessert,pizza,soup]
+  const popular = menu.filter((item) => item.category === "popular");
+  const drinks = menu.filter((item) => item.category === "drinks");
+  // console.log(salad, "salad");
+  const categories = {
+    offer: offer,
+    salad: salad,
+    dessert: dessert,
+    pizza: pizza,
+    soup: soup,
+    drinks: drinks,
+    popular: popular,
+  };
+  // console.log(categories, "cat");
+  // return [categories];
+  return [offer, salad, dessert, pizza, soup, drinks, popular];
 };
 
 export default useCategory;

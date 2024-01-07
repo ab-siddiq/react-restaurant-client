@@ -10,7 +10,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuCategory from "../MenuCategory/MenuCategory";
 import useCategory from "../../../hooks/useCategory";
 const Menu = () => {
-  const [offer, salad, dessert, pizza, soup] = useCategory();
+  const [offer, salad, dessert, pizza, soup, drinks, popular] = useCategory();
   return (
     <div>
       <Helmet>

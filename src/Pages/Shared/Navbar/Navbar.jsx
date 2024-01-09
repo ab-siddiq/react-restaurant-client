@@ -9,7 +9,7 @@ const Navbar = () => {
       </li>
       
       <li>
-        <Link to={'/order'}>Order</Link>
+        <Link to={'/order/salad'}>Order</Link>
       </li>
     </>
   );
@@ -41,7 +41,7 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <Link to='/' className="btn btn-ghost text-xl">daisyUI</Link>
+          <Link to='/' className="btn btn-ghost text-xl">Restaurant</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>

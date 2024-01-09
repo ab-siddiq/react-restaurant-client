@@ -7,8 +7,12 @@ import useMenu from "../../hooks/useMenu";
 import useCategory from "../../hooks/useCategory";
 import FoodCard from "../../components/FoodCard/FoodCard";
 import "./Order.css";
+import { useParams } from "react-router-dom";
 const Order = () => {
-  const [tabIndex, setTabIndex] = useState(0);
+  const { category } = useParams();
+  const categories = ['pizza', 'offer', 'soup', 'dessert', 'salad', 'popular', 'drinks']
+  const initialIndex = categories.indexOf(category);
+  const [tabIndex, setTabIndex] = useState(initialIndex);
   const [pizza, offer, soup, dessert, salad, popular, drinks] = useCategory();
   const [menu] = useMenu();
   let menuCategories = [];
@@ -21,7 +25,7 @@ const Order = () => {
         <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <div className="uppercase">
             <TabList>
-              {uniqueCategory.map((category, i) => (
+              {categories.map((category, i) => (
                 <Tab key={i + 1}>{category}</Tab>
               ))}
             </TabList>

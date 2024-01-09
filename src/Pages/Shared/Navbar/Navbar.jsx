@@ -11,11 +11,14 @@ const Navbar = () => {
       <li>
         <Link to={'/order/salad'}>Order</Link>
       </li>
+      <li>
+        <Link to={'/login'}>Login</Link>
+      </li>
     </>
   );
   return (
     <div className="">
-      <div className="navbar fixed z-10 bg-yellow-400 max-w-screen-xl text-red-900">
+      <div className="navbar fixed z-10 bg-yellow-400 md:max-w-screen-xl min-w-screen-sm text-red-900">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

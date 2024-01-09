@@ -15,12 +15,12 @@ import "@smastrom/react-rating/style.css";
 const Testimonial = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("reviews.json")
+    fetch("https://react-restaurant-server.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
   return (
-    <div>
+    <div className="my-24">
       <SectionTitle
         heading={"testimonials"}
         subHeading={"what our client says?"}

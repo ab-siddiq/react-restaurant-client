@@ -3,7 +3,7 @@ import loginImage from "../../assets/loginImage.png";
 import { Link } from "react-router-dom";
 const SignUp = () => {
   const handleSignIn = (e) => {
-
+    
   };
   return (
     <div>

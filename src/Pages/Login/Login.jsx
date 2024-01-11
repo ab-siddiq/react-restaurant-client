@@ -6,13 +6,16 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../providers/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImage from "../../assets/loginImage.png";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 const Login = () => {
   const capchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
   const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -27,11 +30,12 @@ const Login = () => {
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Your work has been saved",
+        title: `User ${user.email} successfully logedin`,
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
       console.log(user);
+      navigate(from,{replace:true})
     });
   };
   const handleValidateCapcha = (e) => {
@@ -103,7 +107,7 @@ const Login = () => {
               <div className="text-right">
                 <p className="">
                   New Here?{" "}
-                  <Link to={'/'} className="text-yellow-500 text-sm" to={"/signup"}>
+                  <Link to={"/"} className="text-yellow-500 text-sm">
                     Sign Up here
                   </Link>
                 </p>

@@ -1,27 +1,46 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
-
+import { FaShoppingCart } from "react-icons/fa";
 const Navbar = () => {
-  const {user,logOut} = useContext(AuthContext)
-  const handleLogout = ()=>{
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogout = () => {
     logOut()
-    .then(()=>{})
-    .catch(err=>console.log(err))
-  }
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
   const navItems = (
     <>
       <li>
-        <Link to='/menu'>Our Menu</Link>
+        <Link to="/menu">Our Menu</Link>
       </li>
-      
+
       <li>
-        <Link to={'/order/salad'}>Order</Link>
+        <Link to={"/order/salad"}>Order</Link>
+      </li>
+
+      <li>
+        {user ? (
+          <>
+            {" "}
+            <Link
+              to="/login"
+              onClick={handleLogout}
+              className="bg-yellow-800 text-red-200 hover:bg-yellow-500 hover:text-yellow-950"
+            >
+              LogOut
+            </Link>
+          </>
+        ) : (
+          <Link to={"/login"}>Login</Link>
+        )}
       </li>
       <li>
-        {
-          user ? <> <Link to='/login' onClick={handleLogout} className="bg-yellow-800 text-red-200 hover:bg-yellow-500 hover:text-yellow-950">LogOut</Link></> : <Link to={'/login'}>Login</Link>
-        }
+        <button className="bg-yellow-800 ml-2 border-2 border-transparent text-yellow-600 hover:border-2 hover:border-yellow-800 hover:text-yellow-800 ">
+        <FaShoppingCart />
+          <div className="badge badge-secondary">+99</div>
+        </button>
+     
       </li>
     </>
   );
@@ -53,7 +72,9 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <Link to='/' className="btn btn-ghost text-xl">Restaurant</Link>
+          <Link to="/" className="btn btn-ghost text-xl">
+            Restaurant
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>

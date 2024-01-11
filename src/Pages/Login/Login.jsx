@@ -8,6 +8,7 @@ import {
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import loginImage from "../../assets/loginImage.png";
+import Swal from 'sweetalert2'
 const Login = () => {
   const capchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
@@ -23,11 +24,18 @@ const Login = () => {
     console.log(email, password);
     signIn(email, password).then((res) => {
       const user = res.user;
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500
+      });
       console.log(user);
     });
   };
   const handleValidateCapcha = (e) => {
-    const user_capcha_value = capchaRef.current.value;
+    const user_capcha_value = e.target.value;
     console.log(user_capcha_value);
     if (validateCaptcha(user_capcha_value)) {
       setDisabled(false);
@@ -79,16 +87,13 @@ const Login = () => {
                   <LoadCanvasTemplate />
                 </label>
                 <input
-                  ref={capchaRef}
+                  onBlur={handleValidateCapcha}
                   type="text"
                   placeholder="type captcha"
-                  name="password"
+                  name="captcha"
                   className="input input-bordered"
                   required
                 />
-                <button onClick={handleValidateCapcha} className="btn mt-2">
-                  validate capcha
-                </button>
               </div>
               <div className="form-control mt-6">
                 <button disabled={disabled} className="btn btn-primary">
@@ -98,7 +103,7 @@ const Login = () => {
               <div className="text-right">
                 <p className="">
                   New Here?{" "}
-                  <Link className="text-yellow-500 text-sm" to={"/signup"}>
+                  <Link to={'/'} className="text-yellow-500 text-sm" to={"/signup"}>
                     Sign Up here
                   </Link>
                 </p>

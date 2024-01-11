@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import loginImage from "../../assets/loginImage.png";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 const SignUp = () => {
-  const handleSignIn = (e) => {
-    
-  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const handleSignIn = (e) => {};
   return (
     <div>
       <div className="hero min-h-screen bg-base-200  ">
@@ -46,7 +51,9 @@ const SignUp = () => {
               </div>
 
               <div className="form-control mt-6">
-                <button className="btn bg-yellow-500 text-black hover:bg-yellow-800 hover:text-yellow-300">Sign Up</button>
+                <button className="btn bg-yellow-500 text-black hover:bg-yellow-800 hover:text-yellow-300">
+                  Sign Up
+                </button>
               </div>
               <div className="text-right">
                 <p className="">

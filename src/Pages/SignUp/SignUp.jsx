@@ -2,19 +2,35 @@ import React, { useContext, useState } from "react";
 import loginImage from "../../assets/loginImage.png";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { data } from "autoprefixer";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 const SignUp = () => {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const onSubmit = (data) => {
     console.log(data);
-    createUser(data.email, data.password)
-    .then(res=>console.log(res.user))
+    createUser(data.email, data.password).then((res) => {
+      console.log(res.user);
+      console.log(data.name)
+      updateUserProfile(data.name)
+        .then(() => {
+          console.log("profile updated");
+          reset();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${data.name} is created successfully`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        })
+        .catch((error) => console.log(error));
+    });
   };
 
   console.log();
